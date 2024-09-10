@@ -2,6 +2,7 @@ const dotenv = require('dotenv'); //control C escape terminal comment
 dotenv.config();
 const express = require('express');
 const app = express();
+//create server putting into variable -app - industry standard
 const fetchData = require('./utils/fetchData');
 
 const serveGifs = async (req, res, next) => {
@@ -20,10 +21,10 @@ const path = require('path');
 
 const pathToDistFolder = path.join(__dirname, '../giphy-search/dist');
 console.log(pathToDistFolder);
-const serveStatic = express.static(pathToDistFolder);
+const serveStatic = express.static(pathToDistFolder); //
 
 app.use(serveStatic);
-
+//middleware - like searching google prompts a static page
 app.get('/api/gifs', serveGifs);
 
 const port = 8080;
